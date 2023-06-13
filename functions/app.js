@@ -1,5 +1,6 @@
 const express = require('express');
 const twilio = require('twilio');
+const serverless = require('serverless-http');
 
 const app = express();
 
@@ -21,12 +22,12 @@ app.post('/voice', (req, res) => {
   res.type('text/xml');
   res.send(twiml.toString());
 });
+
 app.get('/', (req, res) => {
-    // const transcription = req.body.SpeechResult;
-    // Process the transcribed text as needed
+  // const transcription = req.body.SpeechResult;
+  // Process the transcribed text as needed
   res.send("<h1> Welcome To the App </h1>");
-    res.sendStatus(200);
-  });
+});
 
 app.post('/transcribe', (req, res) => {
   const transcription = req.body.SpeechResult;
@@ -35,7 +36,5 @@ app.post('/transcribe', (req, res) => {
   res.sendStatus(200);
 });
 
-// Start the server
-app.listen(3000, () => {
-  console.log('Server listening on port 3000');
-});
+// Export the serverless handler
+module.exports.handler = serverless(app);
