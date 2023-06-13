@@ -21,6 +21,12 @@ app.post('/voice', (req, res) => {
   res.type('text/xml');
   res.send(twiml.toString());
 });
+app.get('/', (req, res) => {
+    // const transcription = req.body.SpeechResult;
+    // Process the transcribed text as needed
+  res.send("<h1> Welcome To the App </h1>");
+    res.sendStatus(200);
+  });
 
 app.post('/transcribe', (req, res) => {
   const transcription = req.body.SpeechResult;
