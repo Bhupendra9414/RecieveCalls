@@ -1,6 +1,8 @@
 const express = require('express');
 const twilio = require('twilio');
 const serverless = require('serverless-http');
+require('dotenv').config();
+
 
 const app = express();
 
@@ -37,4 +39,8 @@ app.post('/transcribe', (req, res) => {
 });
 
 // Export the serverless handler
-module.exports = app;
+// module.exports.handler = serverless(app);
+const port = process.env.PORT || 3000
+app.listen(port, () => {
+  console.log('Server listening on port 3000');
+});
