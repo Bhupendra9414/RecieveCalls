@@ -1,0 +1,3 @@
+version: 1
+buildCommand: npm install --production
+publishDir: .

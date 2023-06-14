@@ -37,4 +37,4 @@ app.post('/transcribe', (req, res) => {
 });
 
 // Export the serverless handler
-module.exports.handler = serverless(app);
+module.exports = app;
